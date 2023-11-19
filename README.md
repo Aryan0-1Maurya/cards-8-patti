@@ -4,7 +4,7 @@ Experience the thrill of Cards 8 Patti, a classic card game brought to your scre
 
 ## Play the Game
 
-[Play Now](https://your-username.github.io/cards-8-patti/) 🕹️
+[Play Now](https://aryan0-1maurya.github.io/cards-8-patti/) 🕹️
 
 ## About the Game
 
