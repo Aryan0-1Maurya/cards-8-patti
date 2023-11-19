@@ -1,0 +1,116 @@
+/* 
+
+     ============================================================
+      
+          _____________   ^^^^^^^^^^    ____________________
+
+[   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  ]
+
+          _____________   ^^^^^^^^^^    ____________________
+
+     ============================================================
+
+*/
+
+#buymeacoffee {
+    z-index: 10000;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+#buymeacoffee img {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+body {
+    background: rgb(0, 142, 255);
+    font-family: sans-serif;
+}
+
+.crds {
+    background: #eee;
+    position: absolute;
+    font-family: sans-serif;
+    border: 1px solid #000;
+    transition: top .2s, transform .4s, left .2s;
+    cursor: pointer;
+}
+
+.sc,
+.msc,
+.jsc {
+    display: block;
+    position: absolute;
+    font-weight: 600;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.bgp {
+    font-size: 0.8em;
+    background:
+        linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 0 0,
+        linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 0 0,
+        linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 7px -15px,
+        linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 7px -15px,
+        #36c;
+    background-size: 15px 30px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#rule,
+#endShow {
+    color: #fff;
+    background: #000;
+    position: absolute;
+    height: 200px;
+    margin: 10px;
+    padding: 0px;
+    width: 320px;
+    top: 100px;
+}
+
+.btns {
+    position: absolute;
+    bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 80px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+#data,
+#dataEnd {
+    position: absolute;
+    top: 50px;
+    padding: 0px 10px;
+    display: block;
+}
+
+/* 
+
+     ============================================================
+      
+          _____________   ^^^^^^^^^^    ____________________
+
+[   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  ]
+
+          _____________   ^^^^^^^^^^    ____________________
+
+     ============================================================
+
+*/

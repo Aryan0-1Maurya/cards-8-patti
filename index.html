@@ -1,0 +1,647 @@
+<!-- 
+
+      ************************************************************
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="author" content="Aryan Maurya" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <title>Cards 8-patti</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta
+      name="description"
+      content="This is online card game build for your imporove thing skill in this domain by aryan maurya enjoy your game"
+    />
+    <meta
+      name="keywords"
+      content="8 patti , tash ,cards ,cards game,patti game,cards game,patti game,teent game,king queen joker ,A,K,games,cardplay ,palying cards,pay card,games,play games, games player ,online games hub, fun free, online , computer, other game,color poly green shok,online dino game by aryan , aryan sir, aryan sir game"
+    />
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="game-area">
+        </div>
+        <div id="test"></div>
+        <div id="endShow" style="display: none; z-index: 9000000000000">
+            <span style="position:absolute; top:10px; left:10px; font-size:20px; font-weight:600">No more moves!</span>
+            <span id="dataEnd" style="font-size:15px">
+                You have run out of moves. Good game!
+            </span>
+            <button class="btns" onclick="rld()" style="right:10px;">Ok</button>
+        </div>
+        <script>
+            function rld(){
+                window.location.reload();
+            }
+        </script>
+    <script>
+     
+        var val;
+        var overCheak=0;
+        var cn=[];
+        for(k=1;k<53;k++){
+            cn[cn.length]=k;
+        }
+        cn.sort(function(a,b){return .5-Math.random()});
+        
+        var dactv=cn.slice(34);
+        var actv=cn.slice(24,34);
+        var allactv=cn.slice(24);
+        
+        function adcheck(zzz){
+            var pos=allactv.indexOf(zzz);
+            var zo=allactv[pos-1];
+            var bo=allactv[pos+1];
+            actv=actv.filter(function(l){
+                return l!==zzz;
+            });
+            
+        
+            if(pos>=0 && pos<10){
+                if(pos>0 && pos<9){
+                    var zo=allactv[pos-1];
+                    var bo=allactv[pos+1];
+                    if(actv.indexOf(zo)==-1){
+                        actv[actv.length]=allactv[pos+9];
+                        document.getElementById("b"+allactv[pos+9]).style.display="none";
+                        dactv=dactv.filter(function(l){
+                        return l!==allactv[pos+9];
+                        });
+                    }
+                    if(actv.indexOf(bo)==-1){
+                           actv[actv.length]=allactv[pos+10];
+                           document.getElementById("b"+allactv[pos+10]).style.display="none";
+                           dactv=dactv.filter(function(l){
+                           return l!==allactv[pos+10];
+                           });
+                    }
+                }
+                else if(pos==0){
+                    var bo=allactv[pos+1];
+                    if(actv.indexOf(bo)==-1){
+                        actv[actv.length]=allactv[pos+10];
+                        document.getElementById("b"+allactv[pos+10]).style.display="none";
+                        dactv=dactv.filter(function(l){
+                        return l!==allactv[pos+10];
+                        });
+                    }
+                }
+                else{
+                    var zo=allactv[pos-1];
+                        if(actv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+9];
+                            document.getElementById("b"+allactv[pos+9]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+9];
+                            });
+                    }
+                }
+                
+            }
+            else if(pos>9 && pos<19){
+                if(pos<13){
+                    if(pos==10){
+                        var bo=allactv[pos+1];
+                        if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                            actv[actv.length]=allactv[pos+9];
+                            document.getElementById("b"+allactv[pos+9]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+9];
+                            });
+                            
+                        }
+                    }
+                    else if(pos==11){
+                        var zo=allactv[pos-1];
+                        var bo=allactv[pos+1];
+                        if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+8];
+                            document.getElementById("b"+allactv[pos+8]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+8];
+                            });
+                            
+                        }
+                        if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                            actv[actv.length]=allactv[pos+9];
+                            document.getElementById("b"+allactv[pos+9]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+9];
+                            });
+                            
+                        }
+                    }
+                    else{
+                        var zo=allactv[pos-1];
+                        if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+8];
+                            document.getElementById("b"+allactv[pos+8]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+8];
+                            });
+                    
+                        }
+                    }
+                }
+                else if(pos<16){
+                        if(pos==13){
+                            var bo=allactv[pos+1];
+                            if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                                actv[actv.length]=allactv[pos+8];
+                                document.getElementById("b"+allactv[pos+8]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                return l!==allactv[pos+8];
+                                });
+                            
+                            }
+                        }
+                        else if(pos==14){
+                            var zo=allactv[pos-1];
+                            var bo=allactv[pos+1];
+                            if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                                actv[actv.length]=allactv[pos+7];
+                                document.getElementById("b"+allactv[pos+7]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                return l!==allactv[pos+7];
+                                });
+                            
+                            }
+                            if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                                actv[actv.length]=allactv[pos+8];
+                                document.getElementById("b"+allactv[pos+8]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                return l!==allactv[pos+8];
+                                });
+                                
+                            }
+                        }
+                        else{
+                            var zo=allactv[pos-1];
+                            if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+7];
+                            document.getElementById("b"+allactv[pos+7]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+7];
+                            });
+                            
+                        }
+                    }
+                }
+                else{
+                    if(pos==16){
+                        var bo=allactv[pos+1];
+                        if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                            actv[actv.length]=allactv[pos+7];
+                            document.getElementById("b"+allactv[pos+7]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+7];
+                            });
+                            
+                        }
+                    }
+                    else if(pos==17){
+                        var zo=allactv[pos-1];
+                        var bo=allactv[pos+1];
+                        if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+6];
+                            document.getElementById("b"+allactv[pos+6]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+6];
+                            });
+                            
+                        }
+                        if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                            actv[actv.length]=allactv[pos+7];
+                            document.getElementById("b"+allactv[pos+7]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+7];
+                            });
+                            
+                        }
+                    }
+                    else{
+                        var zo=allactv[pos-1];
+                        if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                            actv[actv.length]=allactv[pos+6];
+                            document.getElementById("b"+allactv[pos+6]).style.display="none";
+                            dactv=dactv.filter(function(l){
+                            return l!==allactv[pos+6];
+                            });
+                            
+                        }
+                    }
+                }
+            
+        
+            
+            }
+            
+            else{
+                if(pos>18 && pos<25){
+                    if(pos==19 || pos==20){
+                        if(pos==19){
+                            var bo=allactv[pos+1];
+                            if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                                actv[actv.length]=allactv[pos+6];
+                                document.getElementById("b"+allactv[pos+6]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+6];
+                                });
+                            
+                            }
+                        }
+                        else{
+                            var zo=allactv[pos-1];
+                            if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                                actv[actv.length]=allactv[pos+5];
+                                document.getElementById("b"+allactv[pos+5]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+5];
+                                });
+                                
+                            }
+                        }
+                    }
+                    else if(pos==21 || pos==22){
+                        if(pos==21){
+                            var bo=allactv[pos+1];
+                            if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                                actv[actv.length]=allactv[pos+5];
+                                document.getElementById("b"+allactv[pos+5]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+5];
+                                });
+                            
+                            }
+                        }
+                        else{
+                            var zo=allactv[pos-1];
+                            if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                                actv[actv.length]=allactv[pos+4];
+                                document.getElementById("b"+allactv[pos+4]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+4];
+                                });
+                    
+                            }
+                        }
+                    }
+                    else{
+                        if(pos==23){
+                            var bo=allactv[pos+1];
+                            if(actv.indexOf(bo)==-1 && dactv.indexOf(bo)==-1){
+                                actv[actv.length]=allactv[pos+4];
+                                document.getElementById("b"+allactv[pos+4]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+4];
+                                });
+                                
+                            }
+                        }
+                        else{
+                            var zo=allactv[pos-1];
+                            if(actv.indexOf(zo)==-1 && dactv.indexOf(zo)==-1){
+                                actv[actv.length]=allactv[pos+3];
+                                document.getElementById("b"+allactv[pos+3]).style.display="none";
+                                dactv=dactv.filter(function(l){
+                                    return l!==allactv[pos+3];
+                                });
+                            
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                }
+            }
+            
+            if(actv.length==0){
+                setTimeout(function(){
+                    showEndWin();
+                },2000)
+            }
+            else if(overCheak>0){
+                if((actv.indexOf(val-1)<0 && actv.indexOf(val+12)<0 && actv.indexOf(val+25)<0 && actv.indexOf(val+38)<0 && actv.indexOf(val+51)<0) && (actv.indexOf(val+1)<0 && actv.indexOf(val+14)<0 && actv.indexOf(val+27)<0 && actv.indexOf(val+40)<0)){
+                    setTimeout(function(){
+                        showEnd();
+                    },2000);
+                }
+            }
+            
+            
+        }
+        
+        
+        var area = document.getElementById("game-area");
+        var w = window.innerWidth-2;
+        if(window.innerWidth>700){
+            w=700;
+        }
+        
+        var nmb=["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
+        
+        function components(){
+            for(i=0;i<52;i++){
+                if(i<24){
+                    if(cn[i]<13){
+                           area.innerHTML=area.innerHTML+'<div class="crds" style="color: black; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret_alt()" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&spades;</span></span><span class="msc">&spades;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&spades;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else if(cn[i]<26){
+                        area.innerHTML=area.innerHTML+'<div class="crds" style="color: red; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret_alt()" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&hearts;</span></span><span class="msc">&hearts;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&hearts;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else if(cn[i]<39){
+                        area.innerHTML=area.innerHTML+'<div class="crds" style="color: black; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret_alt()" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&clubs;</span></span><span class="msc">&clubs;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&clubs;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else{
+                        area.innerHTML=area.innerHTML+'<div class="crds" style="color: red; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret_alt()" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&diams;</span></span><span class="msc">&diams;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&diams;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }   
+           
+
+                }
+                else{
+                    if(cn[i]<13){
+                    area.innerHTML=area.innerHTML+'<div class="crds" style="color: black; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret('+cn[i]+')" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&spades;</span></span><span class="msc">&spades;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&spades;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else if(cn[i]<26){
+                    area.innerHTML=area.innerHTML+'<div class="crds" style="color: red; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret('+cn[i]+')" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&hearts;</span></span><span class="msc">&hearts;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&hearts;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else if(cn[i]<39){
+                    area.innerHTML=area.innerHTML+'<div class="crds" style="color: black; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret('+cn[i]+')" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&clubs;</span></span><span class="msc">&clubs;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&clubs;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    else{
+                    area.innerHTML=area.innerHTML+'<div class="crds" style="color: red; top: '+(w-50)+'px;left:'+(50+(i*5))+'px;" onclick="ret('+cn[i]+')" id="a'+cn[i]+'"><span class="sc" >'+nmb[cn[i]%13]+'<span class="ssc">&diams;</span></span><span class="msc">&diams;</span><span class="jsc"><span class="sjsc" style="font-size: 35px;">&diams;</span>'+nmb[cn[i]%13]+'</span><div class="bgp" id="b'+cn[i]+'"></div></div>';
+                    }
+                    
+                    
+                }
+            }
+            
+            cdefgh()
+        }
+        //=========
+        var lft=w/37.5;
+        function isMobileDevice() {
+            if((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)){
+                lft=w/110.5;
+            }
+        };
+        isMobileDevice();
+        
+        function cdefgh(){
+        //var w = window.innerWidth;
+        var c = document.getElementsByClassName('crds');
+        var d = document.getElementsByClassName('sc');
+        var e = document.getElementsByClassName('ssc');
+        var f = document.getElementsByClassName('msc');
+        var g = document.getElementsByClassName('jsc');
+        var h = document.getElementsByClassName('sjsc');
+        
+        var cnum = c.length;
+        for(n=0;n<cnum;n++){
+            c[n].style.width=w/10.5+'px';
+            c[n].style.height=w*.158+'px';
+            c[n].style.fontSize=w*.074+'px';
+            c[n].style.borderRadius=w*.0105+'px';
+            
+            d[n].style.left=(w/150)+'px';
+            d[n].style.fontSize=w/31.66+'px';
+            
+            e[n].style.fontSize=w/27.14+"px";
+            
+            f[n].style.left=lft+'px';
+            f[n].style.top=(w/28.5)+'px';
+            
+            g[n].style.right=(w/150)+'px';
+            g[n].style.bottom=0+'px';
+            g[n].style.fontSize=w/31.66+'px';
+            g[n].style.transform="rotateX(180deg)";
+            
+            h[n].style.fontSize=w/27.14+"px";
+        }
+        }
+        //===========
+        var images = document.getElementsByClassName('crds');   
+        var count = 0;
+        var x = 27;
+        var h=50;
+        function move(){
+            var intv=setInterval(function(){
+                if(count<3){
+                    images[51-count].style.top=h+w*.083+'px';
+                    images[51-count].style.left=w*(.15+.3*count)+'px';
+                    images[51-count].style.transform="rotateZ(0deg)";
+                    images[51-count].style.zIndex=count+1;
+                }
+                else if(count<9){
+                    if(count<5){
+                        images[51-count].style.top=h+w*.083*2+'px';
+                        images[51-count].style.transform="rotateZ(0deg)";
+                        images[51-count].style.left=w*.1+w*.1*(count-3)+"px";
+                        images[51-count].style.zIndex=count+1;
+                    }
+                    else if(count<7){
+                        images[51-count].style.top=h+w*.083*2+'px';
+                        images[51-count].style.transform="rotateZ(0deg)";
+                        images[51-count].style.left=w*.1*4+w*.1*(count-5)+"px";
+                        images[51-count].style.zIndex=count+1;
+                    }
+                    else{
+                        images[51-count].style.top=h+w*.083*2+'px';
+                        images[51-count].style.transform="rotateZ(0deg)";
+                        images[51-count].style.left=w*.1*7+w*.1*(count-7)+"px";
+                        images[51-count].style.zIndex=count+1;
+                    }    
+                }
+                else if(count<18){
+                    images[51-count].style.top=h+w*.083*3+'px';
+                    images[51-count].style.transform="rotateZ(0deg)";
+                    images[51-count].style.left=w*.05+w*.1*(count-9)+'px';
+                    images[51-count].style.zIndex=count+1;
+                }
+                else{
+                    images[51-count].style.top=h+w*.083*4+'px';
+                    images[51-count].style.transform="rotateZ(0deg)";
+                    images[51-count].style.left=w*.1*(count-18)+'px';
+                    images[51-count].style.zIndex=count+1;
+                    document.getElementById("b"+cn[51-count]).style.display="none";
+                    
+                }
+                
+                if(count>=x){
+                    clearInterval(intv);
+                }
+                count++;
+            },50)
+            setTimeout(function(){ret_alt(cn[23]);},2000)
+            
+        }
+        
+        
+        
+        var zind=100;
+        function ret(p){
+            if(actv.indexOf(p)>-1){
+            var mc=p%13;
+            if((mc-val)==1 || (mc-val)==-1 || (mc-val)==12 || (mc-val)==-12){
+                document.getElementById("a"+p).style.transition="top .2s ease-out .5s, transform 1s, left 1s";
+                //document.getElementById("a"+p).style.top="50px";
+                document.getElementById("a"+p).style.top=(w-50)+"px";
+                document.getElementById("a"+p).style.zIndex=zind;
+                zind+=100;
+                document.getElementById("a"+p).style.left=w/2-w/10+100+"px";
+                document.getElementById("a"+p).style.transform="rotateZ(720deg)";
+                val=mc;
+                
+                adcheck(p);
+            }else{
+                aleMsg();
+              //  alert("You can only select cards that are one above or one below the top card in the waste pile at the bottom of the screen.")
+            }
+            }
+        function aleMsg(){
+            Swal.fire({
+    title: 'You can only select cards that are one above or one below the top card in the waste pile at the bottom of the screen',
+    showConfirmButton: false,
+    timer: 2000
+  })
+         //   Swal("You can only select cards that are one above or one below the top card in the waste pile at the bottom of the screen.")
+        }
+        }
+        
+        var bd=0;
+        
+        var altc=23;
+        function ret_alt(){
+        if(bd>0){
+            var p=cn[altc];
+            var mc=p%13;
+           if(altc>-1){
+            document.getElementById("a"+p).style.transition="top .4s ease-in .1s, transform .2s, left .2s";
+            //document.getElementById("a"+p).style.top="50px";
+            document.getElementById("a"+p).style.top=(w-50)+"px";
+            document.getElementById("a"+p).style.zIndex=zind;
+            zind+=100;
+            document.getElementById("a"+p).style.left=w/2-w/10+100+"px";
+            document.getElementById("a"+p).style.transform="rotateY(360deg)";
+            document.getElementById("b"+p).style.display="none";
+            val=mc;}
+            
+            altc--;
+            if(altc<0){
+                overCheak=1
+                if(overCheak>0){
+                if((actv.indexOf(val-1)<0 && actv.indexOf(val+12)<0 && actv.indexOf(val+25)<0 && actv.indexOf(val+38)<0 && actv.indexOf(val+51)<0) && (actv.indexOf(val+1)<0 && actv.indexOf(val+14)<0 && actv.indexOf(val+27)<0 && actv.indexOf(val+40)<0)){
+                    setTimeout(function(){
+                        showEnd();
+                    },2000);
+                }
+            }
+            }
+            }
+        }
+        
+        
+        components();
+        
+        function showEnd(){
+            document.getElementById("endShow").style.left=(ww-340)/2+"px";
+            document.getElementById("endShow").style.display="block";
+        }
+        
+        var winP=["Perfect!","Well Done!","Awesome!","Cool!","Fantastic!"];
+        function showEndWin(){
+            document.getElementById("endShow").style.left=(window.innerWidth-340)/2+"px";
+            document.getElementById("endShow").style.display="block";
+            document.getElementById("endShow").innerHTML='<span style="color:#fff; position:absolute; top:50px; left:50px; font-size:25px">'+winP[Math.floor(Math.random()*winP.length)]+'</span><button class="btns" onclick="rld()" style="right:10px;">Ok</button>';
+        }
+    </script>
+    <div id="rule">
+        <span style="position:absolute; top:10px; left:10px; font-size:20px; font-weight:600">How to play</span>
+        <span style="position:absolute; top:10px; right:10px; font-size:15px; font-weight:500"><span id="nr">1</span> of 4</span>
+        <span id="data" style="font-size:15px">The goal of TriPeaks is to clear the board by tapping face-up cards that are either one above or one
+        below the top card in the waste pile.
+        </span>
+        <button id="nxt" class="btns" onclick="nextRule()" style="right:10px;">Next</button>
+        <button id="clse" class="btns" onclick="closeRule()" style="right:100px">Close</button>
+        <button id="bck" class="btns" onclick="backRule()" style="right:100px; display:none;">Back</button>
+    </div>
+        
+    
+    <script type="text/javascript">
+        var rules=["The goal of TriPeaks is to clear the board by tapping face-up cards that are either one above or one below the top card in the waste pile.","Color and suit do not matter in TriPeaks. You can tap any card on the board as long as it is face-up and is either one above or one below the top card in the waste pile.","Aces can be either high or low in TriPeaks. Try to tap as many cards in sequence as you can. Here is a sample sequence: jack, queen, king, ace, 2, 3, 2, ace, king.","If there are no moves available, tap the cards at the bottom of the screen for a new card."];
+        var rc=0;
+        var ww=window.innerWidth;
+        
+        document.getElementById("rule").style.left=(ww-340)/2+"px";
+        function closeRule(){
+        document.getElementById("rule").style.display="none";
+        bd=1;
+        move();
+        }
+
+        function nextRule(){
+        document.getElementById("data").innerHTML=rules[rc+1];
+        document.getElementById("nr").innerHTML=rc+2;
+        rc++;
+        ruleBox();
+        }
+
+        function backRule(){
+        document.getElementById("data").innerHTML=rules[rc-1];
+        document.getElementById("nr").innerHTML=rc;
+        rc--;
+        ruleBox();
+        }
+
+        function ruleBox(){
+        if(rc==0){
+        document.getElementById("bck").style.display="none";
+        document.getElementById("clse").style.right="100px";
+        }
+        else if(rc>0 && rc<rules.length-1){
+        document.getElementById("bck").style.display="block";
+        document.getElementById("clse").style.right="190px";
+        document.getElementById("nxt").style.display="block";
+        document.getElementById("clse").innerHTML="Close";
+        }
+        else{
+        document.getElementById("nxt").style.display="none";
+        document.getElementById("bck").style.right="100px";
+        document.getElementById("clse").style.right="10px";
+        document.getElementById("clse").innerHTML="Play";
+        }
+        }
+    </script>
+    </body>
+</html>
+
+<!-- 
+
+      ************************************************************
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
